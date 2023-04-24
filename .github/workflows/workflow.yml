@@ -1,22 +1,38 @@
-name: Cypress E2E Test
+name: Test
+
 on:
     workflow_dispatch:
         inputs:
             environment:
-                type: environment
+                required: true
+                type: choice
+                description: Test Environment
+                default: "stage"
+                options:
+                    - dev
+                    - test
+                    - stage
+            user-flow:
+                required: true
+                type: choice
+                description: User Flow
+                options:
+                    - Check 1
+                    - Check 2
+               
+env:
+    CYPRESS_BASE_URL: https://${{ github.event.inputs.environment }}.com
 
 jobs:
-    data-prep-train:
+    check-1:
+        if: github.event.inputs.environment == "Check 1"
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
               uses: actions/checkout@v3
+            - name: Cypress install
+              uses: cypress-io/github-action@v2
+              with:
+                  runTests: false
             - run: |
-                  echo "hello"
-    verify-training-deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
-            - run: |
-                  echo "hello"
+                echo ${{ github.env.CYPRESS_BASE_URL }}
