@@ -29,4 +29,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
-                echo "CYPRESS_ENV_${{ github.event.inputs.environment }}"
+                echo ${{ github.event.inputs.environment }}
