@@ -17,7 +17,7 @@ on:
                 type: choice
                 description: User Flow
                 options:
-                    - Check-1
+                    - Check 1
                     - Check 2
                
 env:
@@ -25,14 +25,8 @@ env:
 
 jobs:
     check-1:
-        if: github.event.inputs.user-flow == 'Check-1'
+        if: github.event.inputs.user-flow == 'Check 1'
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout
-              uses: actions/checkout@v3
-            - name: Cypress install
-              uses: cypress-io/github-action@v2
-              with:
-                  runTests: false
             - run: |
-                echo ${{ github.env.CYPRESS_BASE_URL }}
+                echo "CYPRESS_ENV_${{ event.inputs.environment.uppercase }}"
