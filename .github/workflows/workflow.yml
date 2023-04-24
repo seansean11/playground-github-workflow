@@ -29,6 +29,5 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
-                echo ${{ format('CYPRESS_ENG_{0}',  github.event.inputs.environment) }}
-                echo ${{ secrets }}
-                echo "${{ secrets[format('CYPRESS_ENV_{0}',  github.event.inputs.environment)] }}"
+                echo "${{ secrets[format('CYPRESS_ENV_{0}',  github.event.inputs.environment)] }}" > env.json
+                cat env.json
