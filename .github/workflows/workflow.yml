@@ -17,7 +17,7 @@ on:
                 type: choice
                 description: User Flow
                 options:
-                    - Check 1
+                    - Check-1
                     - Check 2
                
 env:
@@ -25,7 +25,7 @@ env:
 
 jobs:
     check-1:
-        if: github.event.inputs.environment == "Check 1"
+        if: github.event.inputs.user-flow == "Check-1"
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
