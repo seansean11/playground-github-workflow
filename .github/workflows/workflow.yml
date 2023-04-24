@@ -25,7 +25,7 @@ env:
 
 jobs:
     check-1:
-        if: github.event.inputs.user-flow == "Check-1"
+        if: github.event.inputs.user-flow == 'Check-1'
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
