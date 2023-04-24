@@ -29,4 +29,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
-                echo "TEST_${{ github.event.inputs.environment }}"
+                echo "${{ secrets["CYPRESS_ENG_${{ github.event.inputs.environment }}"] }}"
